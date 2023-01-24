@@ -38,9 +38,26 @@ const createEntry = async (req, res) => {
     });
 }
 
+//Eliminar entry por title
+
+const deleteEntry = async (req, res) => {
+    const title = req.query.title
+    const response = await entry.deleteEntry(title);
+    res.status(200).json({message: "Se ha borrado la entry" + title})
+}
+
+//Actualizar entry a traves de title
+
+const updateEntry = async (req, res) => {
+    const newEntry = req.body
+    const title = req.query.title
+    const response = await entry.updateEntry(newEntry, title);
+    res.status(200).json({message: "Se ha actualizado la entry" + title})
+}
+
 module.exports = {
     getEntries,
     createEntry,
-    //deleteEntry, --> DELETE
-    //updateEntry --> PUT
+    deleteEntry,
+    updateEntry
 }
