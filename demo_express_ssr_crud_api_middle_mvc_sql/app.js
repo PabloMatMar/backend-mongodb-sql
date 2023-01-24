@@ -1,6 +1,7 @@
 const express = require('express')
 const cowsay = require('cowsay')
-
+// require('dotenv').config()
+require('./utils/db_mongo')
 const calculator = require('./utils/calculator')
 const error404 = require('./middlewares/error404')
 
